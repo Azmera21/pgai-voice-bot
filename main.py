@@ -37,13 +37,12 @@ def _mask_phone(number: str) -> str:
         return "***" + number[-4:]
     return "****"
 
-
 def make_call(call_number: int) -> str:
     """
     Initiate a single outbound call.
     Returns the Twilio CallSid.
     """
-    logger.info("Initiating call #%d → %s", call_number, _mask_phone(config.TARGET_PHONE_NUMBER))
+    logger.info("Initiating call #%d", call_number)
 
     call = _twilio.calls.create(
         to=config.TARGET_PHONE_NUMBER,
@@ -88,8 +87,8 @@ def run_all_calls(num_calls: int = config.NUM_CALLS, delay_between: int = 60) ->
     os.makedirs(config.TRANSCRIPT_DIR, exist_ok=True)
 
     logger.info(
-        "Starting campaign: %d calls to %s (delay=%ds)",
-        num_calls, config.TARGET_PHONE_NUMBER, delay_between
+        "Starting campaign: %d calls (delay=%ds)",
+        num_calls, delay_between
     )
 
     results: list[dict] = []

@@ -93,17 +93,9 @@ def answer() -> Response:
     opening = agent.opening_statement()
     action_url = f"{config.WEBHOOK_BASE_URL}/gather"
 
-    recording_done_url = f"{config.WEBHOOK_BASE_URL}/recording_done"
-
-    # Start dual-channel recording
+    # Recording is initiated at the call-creation level in main.py (record=True).
+    # Here we just need to gather the conversation.
     response = VoiceResponse()
-    response.record(
-        action=recording_done_url,
-        recording_status_callback=recording_done_url,
-        recording_channels=config.RECORDING_CHANNELS,
-        recording_status_callback_method="POST",
-        timeout=30,
-    )
 
     gather = Gather(
         input="speech",

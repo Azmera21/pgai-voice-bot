@@ -90,7 +90,14 @@ def analyse_transcript(transcript: str, call_sid: str) -> list[dict[str, Any]]:
                     break
             else:
                 values = list(parsed.values())
-                bugs = values[0] if values and isinstance(values[0], list) else []
+                if values and isinstance(values[0], list):
+                    bugs = values[0]
+                else:
+                    logger.warning(
+                        "[%s] Unexpected JSON structure from bug analysis — defaulting to []. "
+                        "Keys: %s  Data: %.200s", call_sid, list(parsed.keys()), str(parsed)
+                    )
+                    bugs = []
         else:
             bugs = []
     except json.JSONDecodeError:

@@ -28,7 +28,7 @@ Patient details:
   • Insurance   : {config.PATIENT_INSURANCE}
   • Reason      : {config.PATIENT_REASON}
 
-Behavioural rules:
+Behavioral rules:
 1. Speak naturally, like a real person on a phone call — short sentences, occasional
    filler words (um, uh, let me see…), realistic pauses via ellipsis.
 2. Never break character or mention AI, GPT, or scripts.
