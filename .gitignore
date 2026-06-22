@@ -1,0 +1,39 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.so
+.venv/
+venv/
+env/
+
+# Call recordings and transcripts (exclude real recordings from git)
+calls/audio/*.mp3
+calls/audio/*.wav
+calls/transcripts/*.json
+
+# Bug JSON log (generated)
+calls/bugs.json
+
+# Keep directory structure
+!calls/audio/.gitkeep
+!calls/transcripts/.gitkeep
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
